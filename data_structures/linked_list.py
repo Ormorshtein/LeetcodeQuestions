@@ -20,3 +20,12 @@ def array_to_linked_list(arr: List) -> ListNode:
         prev_node.next_node = new_node
         prev_node = new_node
     return sentinel.next_node
+
+
+def linked_list_to_array(head: ListNode) -> List:
+    new_list: List = list()
+    curr_node: ListNode = head
+    while curr_node is not None:
+        new_list.append(curr_node.val)
+        curr_node = curr_node.next_node
+    return new_list
