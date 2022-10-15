@@ -1,10 +1,10 @@
 # Leetcode problem 20
 
 brackets_dict: dict = {'(': ')', '{': '}', '[': ']'}
-from Data_Structures.Stack import Stack
+from data_structures.stack import Stack
 
 
-def isValid(s: str) -> bool:
+def is_valid(s: str) -> bool:
     brackets_stack: Stack = Stack()
 
     for bracket in s:
