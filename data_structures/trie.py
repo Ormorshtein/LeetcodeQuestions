@@ -5,7 +5,7 @@ LATIN_OFFSET = 97
 class LatinTreeNode:
     def __init__(self, letter: str = None):
         self.letter = letter
-        self.children = [None in range(LATIN_ALPHABET_LENGTH)]
+        self.children = [None]*LATIN_ALPHABET_LENGTH
         self.end_of_word = False
 
 
@@ -19,11 +19,7 @@ class Trie:
         curr = self.root
         for letter in word:
             letter_position: int = ord(letter) - LATIN_OFFSET
-            print(f'letter pos: {letter_position}.\nLetter: {letter}')
-            for i in range(26):
-                print(f'index: {i}. letter: {curr.children[i].letter}')
             if curr.children[letter_position] is None:
-                print('Here')
                 return False
             curr = curr.children[letter_position]
 
@@ -32,10 +28,10 @@ class Trie:
         return True
 
     def insert(self, word: str) -> None:
-        curr = self.root
+        curr: LatinTreeNode = self.root
         for letter in word:
             letter_position: int = ord(letter) - LATIN_OFFSET
-            if curr.children[letter_position] is None:
+            if not curr.children[letter_position]:
                 new_node: LatinTreeNode = LatinTreeNode(letter=letter)
                 curr.children[letter_position] = new_node
             curr = curr.children[letter_position]
